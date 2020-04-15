@@ -35,6 +35,12 @@ dates = generate_dates()
 # List of the station ids we want the historical weather for 
 # LAX, EWR, JFK 
 station_ids = ['KCAOAKLA44', 'KNJELIZA13', 'KNYQUEEN31']
+# Map the ids to airport code
+airport = {
+    'KCAOAKLA44': 'LAX',
+    'KNJELIZA13': 'EWR', 
+    'KNYQUEEN31': 'JFK'
+}
 
 def get_weather(station_id, date): 
     # Endpoint 
@@ -83,13 +89,12 @@ with f:
         for station in station_data:
             for k,v in station.items():
                 print(k,v)   
-                data.append(k)
+                data.append(airport[k])
                 data.append(v['avg_temp'])         
                 data.append(v['windspeed_avg'])
                 data.append(v['precipitation'])
         writer.writerow(data)
         
-
 # # Endpoint 
 # url = f'https://api.weather.com/v2/pws/history/daily?stationId={station_id}&format=json&units=m&date={date}&apiKey={api_key}'
 

@@ -18,8 +18,8 @@ api_key = os.getenv('API_KEY')
 
 def generate_dates():
     # Change these dates 
-    start = datetime(2019,12,1).strftime('%Y%m%d') 
-    end = datetime(2019,12,31)
+    start = datetime(2019,11,1).strftime('%Y%m%d') 
+    end = datetime(2019,11,30)
     pd_dates = pd.date_range(start, end).tolist()
     # Convert to proper format 
     dates = []
@@ -68,7 +68,10 @@ for date in dates:
     for station in station_ids: 
         print(station)
         weather = {}
-        weather[station] = get_weather(station, date)
+        try:
+            weather[station] = get_weather(station, date)
+        except:
+            continue 
         weather_at_stations.append(weather)
     weather_data[date] = weather_at_stations
 
@@ -77,7 +80,7 @@ for date in dates:
 # Export to csv 
 # Write the data to csv 
 # File name changes...need to do it month by month
-f = open('dec2019.csv', 'w')
+f = open('nov2019.csv', 'w')
 
 with f:
     writer = csv.writer(f)

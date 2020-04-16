@@ -6,10 +6,8 @@ Usage:
 CSV Format: 
 date, station1, avg_temp, windspeed_avg, precipitation_total, station_n, ...
 
-Errors: 
+Files with Missing Data:
 * aug2018.csv 
-* aug2019.csv 
-* sept2019.csv
-* oct2019.csv 
-* nov2019.csv
-
+* sept2019.csv 
+* oct2019.csv (re-run)
+* nov2019.csv (this one is really bad...may need to redo)
